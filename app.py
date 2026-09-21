@@ -10,12 +10,15 @@ st.set_page_config(
 )
 
 # ── Data loading ──────────────────────────────────────────────────────────────
-DATA_PATH = "ecommerce_customer_behavior_dataset_v2.csv"
+from pathlib import Path
+
+DATA_PATH = Path(__file__).resolve().parent / "ecommerce_customer_behavior_dataset_v2.csv"
 
 @st.cache_data
-def load_data(path: str) -> pd.DataFrame:
+def load_data(path) -> pd.DataFrame:
     df = pd.read_csv(path)
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    df["Discount_Applied"] = df["Discount_Amount"] > 0
     return df
 
 try:
@@ -94,10 +97,10 @@ if sel_payments:
     filters_applied += 1
 
 if returning_option == "Returning Only":
-    filtered_df = filtered_df[filtered_df["Is_Returning_Customer"] == 1]
+    filtered_df = filtered_df[filtered_df["Is_Returning_Customer"] == True]
     filters_applied += 1
 elif returning_option == "New Only":
-    filtered_df = filtered_df[filtered_df["Is_Returning_Customer"] == 0]
+    filtered_df = filtered_df[filtered_df["Is_Returning_Customer"] == False]
     filters_applied += 1
 
 st.sidebar.markdown(f"**Filters Applied:** {filters_applied}")
@@ -114,10 +117,10 @@ if filtered_df.empty:
 # ── Helper ─────────────────────────────────────────────────────────────────────
 def fmt_currency(val: float) -> str:
     if val >= 1_000_000:
-        return f"${val/1_000_000:.2f}M"
+        return f"₹{val/1_000_000:.2f}M"
     if val >= 1_000:
-        return f"${val/1_000:.1f}K"
-    return f"${val:.2f}"
+        return f"₹{val/1_000:.1f}K"
+    return f"₹{val:.2f}"
 
 # ── Tabs ───────────────────────────────────────────────────────────────────────
 tabs = st.tabs([
@@ -176,11 +179,11 @@ with tabs[0]:
             x="Date",
             y="Total_Amount",
             title="Monthly Revenue Trend",
-            labels={"Total_Amount": "Revenue ($)", "Date": "Month"},
+            labels={"Total_Amount": "Revenue (₹)", "Date": "Month"},
             markers=True,
         )
         fig_monthly.update_layout(xaxis_tickangle=-45)
-        st.plotly_chart(fig_monthly, use_container_width=True)
+        st.plotly_chart(fig_monthly, width="stretch")
         st.caption("Total revenue aggregated by calendar month for the selected period.")
 
     with col_b:
@@ -195,10 +198,10 @@ with tabs[0]:
             x="Product_Category",
             y="Total_Amount",
             title="Revenue by Product Category",
-            labels={"Total_Amount": "Revenue ($)", "Product_Category": "Category"},
+            labels={"Total_Amount": "Revenue (₹)", "Product_Category": "Category"},
             color="Product_Category",
         )
-        st.plotly_chart(fig_cat, use_container_width=True)
+        st.plotly_chart(fig_cat, width="stretch")
         st.caption("Total revenue per product category.")
 
 # ════════════════════════════════════════════════════════════
@@ -219,11 +222,11 @@ with tabs[1]:
         y="City",
         orientation="h",
         title="Revenue by City",
-        labels={"Total_Amount": "Revenue ($)", "City": "City"},
+        labels={"Total_Amount": "Revenue (₹)", "City": "City"},
         color="Total_Amount",
         color_continuous_scale="Blues",
     )
-    st.plotly_chart(fig_city, use_container_width=True)
+    st.plotly_chart(fig_city, width="stretch")
     st.caption("Horizontal bar chart showing total revenue contribution by city.")
 
     col_c, col_d = st.columns(2)
@@ -240,11 +243,11 @@ with tabs[1]:
             x="Product_Category",
             y="Total_Amount",
             title="Revenue by Product Category",
-            labels={"Total_Amount": "Revenue ($)", "Product_Category": "Category"},
+            labels={"Total_Amount": "Revenue (₹)", "Product_Category": "Category"},
             color="Total_Amount",
             color_continuous_scale="Greens",
         )
-        st.plotly_chart(fig_cat2, use_container_width=True)
+        st.plotly_chart(fig_cat2, width="stretch")
         st.caption("Total revenue per category (filtered view).")
 
     with col_d:
@@ -259,11 +262,11 @@ with tabs[1]:
         fig_heat = px.imshow(
             heatmap_pivot,
             title="Revenue Heatmap: City × Category",
-            labels={"color": "Revenue ($)"},
+            labels={"color": "Revenue (₹)"},
             color_continuous_scale="YlOrRd",
             aspect="auto",
         )
-        st.plotly_chart(fig_heat, use_container_width=True)
+        st.plotly_chart(fig_heat, width="stretch")
         st.caption("Heatmap of revenue for each city–category combination.")
 
 # ════════════════════════════════════════════════════════════
@@ -281,17 +284,17 @@ with tabs[2]:
             .reset_index()
         )
         ret_rev["Segment"] = ret_rev["Is_Returning_Customer"].map(
-            {1: "Returning", 0: "New"}
+            {True: "Returning", False: "New", 1: "Returning", 0: "New"}
         )
         fig_ret = px.bar(
             ret_rev,
             x="Segment",
             y="Total_Amount",
             title="Revenue: Returning vs New Customers",
-            labels={"Total_Amount": "Revenue ($)", "Segment": "Customer Type"},
+            labels={"Total_Amount": "Revenue (₹)", "Segment": "Customer Type"},
             color="Segment",
         )
-        st.plotly_chart(fig_ret, use_container_width=True)
+        st.plotly_chart(fig_ret, width="stretch")
         st.caption("Revenue split between returning and new customers.")
 
     with col_f:
@@ -312,10 +315,10 @@ with tabs[2]:
                 x="Age_Group",
                 y="Total_Amount",
                 title="Revenue by Age Group",
-                labels={"Total_Amount": "Revenue ($)", "Age_Group": "Age Group"},
+                labels={"Total_Amount": "Revenue (₹)", "Age_Group": "Age Group"},
                 color="Age_Group",
             )
-            st.plotly_chart(fig_age, use_container_width=True)
+            st.plotly_chart(fig_age, width="stretch")
             st.caption("Total revenue broken down by customer age group.")
         else:
             st.info("Age column not found in dataset.")
@@ -334,10 +337,10 @@ with tabs[2]:
             x="Gender",
             y="Total_Amount",
             title="Revenue by Gender",
-            labels={"Total_Amount": "Revenue ($)"},
+            labels={"Total_Amount": "Revenue (₹)"},
             color="Gender",
         )
-        st.plotly_chart(fig_gender, use_container_width=True)
+        st.plotly_chart(fig_gender, width="stretch")
 
     with col_h:
         device_rev = (
@@ -351,10 +354,10 @@ with tabs[2]:
             x="Device_Type",
             y="Total_Amount",
             title="Revenue by Device Type",
-            labels={"Total_Amount": "Revenue ($)", "Device_Type": "Device"},
+            labels={"Total_Amount": "Revenue (₹)", "Device_Type": "Device"},
             color="Device_Type",
         )
-        st.plotly_chart(fig_device, use_container_width=True)
+        st.plotly_chart(fig_device, width="stretch")
 
     with col_i:
         pay_rev = (
@@ -368,10 +371,10 @@ with tabs[2]:
             x="Payment_Method",
             y="Total_Amount",
             title="Revenue by Payment Method",
-            labels={"Total_Amount": "Revenue ($)", "Payment_Method": "Payment"},
+            labels={"Total_Amount": "Revenue (₹)", "Payment_Method": "Payment"},
             color="Payment_Method",
         )
-        st.plotly_chart(fig_pay, use_container_width=True)
+        st.plotly_chart(fig_pay, width="stretch")
 
     st.caption("Gender, device type, and payment method revenue breakdowns.")
 
@@ -393,7 +396,7 @@ with tabs[3]:
                 labels={"Delivery_Time_Days": "Delivery Days", "count": "Orders"},
                 color_discrete_sequence=["#3b82d4"],
             )
-            st.plotly_chart(fig_deliv, use_container_width=True)
+            st.plotly_chart(fig_deliv, width="stretch")
             st.caption("Histogram of order delivery times across the filtered dataset.")
         else:
             st.info("Delivery_Time_Days column not found.")
@@ -416,7 +419,7 @@ with tabs[3]:
                 color="Delivery_Time_Days",
                 color_continuous_scale="Reds",
             )
-            st.plotly_chart(fig_city_deliv, use_container_width=True)
+            st.plotly_chart(fig_city_deliv, width="stretch")
             st.caption("Average delivery time per city.")
 
     col_l, col_m = st.columns(2)
@@ -439,7 +442,7 @@ with tabs[3]:
                 color="Rating",
                 color_continuous_scale="Viridis",
             )
-            st.plotly_chart(fig_rating, use_container_width=True)
+            st.plotly_chart(fig_rating, width="stretch")
             st.caption("Distribution of customer ratings across all orders.")
 
     with col_m:
@@ -462,7 +465,7 @@ with tabs[3]:
                 color="Customer_Rating",
                 color_continuous_scale="RdYlGn",
             )
-            st.plotly_chart(fig_cat_rating, use_container_width=True)
+            st.plotly_chart(fig_cat_rating, width="stretch")
             st.caption("Average rating customers gave for each product category.")
 
 # ════════════════════════════════════════════════════════════
@@ -477,7 +480,7 @@ with tabs[4]:
         disc_counts = filtered_df["Discount_Applied"].value_counts().reset_index()
         disc_counts.columns = ["Discount_Applied", "Count"]
         disc_counts["Label"] = disc_counts["Discount_Applied"].map(
-            {1: "Discounted", 0: "Full Price", True: "Discounted", False: "Full Price"}
+            {True: "Discounted", False: "Full Price"}
         ).fillna(disc_counts["Discount_Applied"].astype(str))
 
         col_n, col_o = st.columns(2)
@@ -490,7 +493,7 @@ with tabs[4]:
                 title="Overall Discount Penetration",
                 color_discrete_sequence=["#3b82d4", "#e5e7eb"],
             )
-            st.plotly_chart(fig_disc_pie, use_container_width=True)
+            st.plotly_chart(fig_disc_pie, width="stretch")
             st.caption("Share of orders that received a discount vs. full-price orders.")
 
         with col_o:
@@ -514,7 +517,7 @@ with tabs[4]:
                 color="Discount_Rate",
                 color_continuous_scale="Oranges",
             )
-            st.plotly_chart(fig_disc_cat, use_container_width=True)
+            st.plotly_chart(fig_disc_cat, width="stretch")
             st.caption("Percentage of orders with a discount applied per category.")
 
         aov_disc = (
@@ -523,18 +526,18 @@ with tabs[4]:
             .reset_index()
         )
         aov_disc["Label"] = aov_disc["Discount_Applied"].map(
-            {1: "Discounted", 0: "Full Price", True: "Discounted", False: "Full Price"}
+            {True: "Discounted", False: "Full Price"}
         ).fillna(aov_disc["Discount_Applied"].astype(str))
         fig_aov_disc = px.bar(
             aov_disc,
             x="Label",
             y="Total_Amount",
             title="Average Order Value: Discounted vs Full Price",
-            labels={"Total_Amount": "Avg Order Value ($)", "Label": "Order Type"},
+            labels={"Total_Amount": "Avg Order Value (₹)", "Label": "Order Type"},
             color="Label",
             color_discrete_sequence=["#3b82d4", "#7c5cd8"],
         )
-        st.plotly_chart(fig_aov_disc, use_container_width=True)
+        st.plotly_chart(fig_aov_disc, width="stretch")
         st.caption("Comparison of average order value for discounted vs full-price orders.")
 
 # ════════════════════════════════════════════════════════════
@@ -561,7 +564,10 @@ with tabs[5]:
         try:
             return pd.qcut(series, q=q, labels=labels, duplicates="drop")
         except Exception:
-            return pd.Series([labels[len(labels) // 2]] * len(series), index=series.index)
+            try:
+                return pd.qcut(series.rank(method="first"), q=q, labels=labels)
+            except Exception:
+                return pd.Series([labels[len(labels) // 2]] * len(series), index=series.index)
 
     rfm["R_Score"] = safe_qcut(rfm["Recency"], 5, [5, 4, 3, 2, 1])
     rfm["F_Score"] = safe_qcut(rfm["Frequency"], 5, [1, 2, 3, 4, 5])
@@ -576,7 +582,7 @@ with tabs[5]:
         if r == 5 and f >= 4:
             return "Champions"
         elif f >= 4 and r >= 3:
-            return "Loyal"
+            return "Loyal Customers"
         elif r >= 4 and f <= 3:
             return "Potential Loyalists"
         elif r <= 2 and f >= 3:
@@ -589,9 +595,7 @@ with tabs[5]:
     seg_counts = rfm["Segment"].value_counts().reset_index()
     seg_counts.columns = ["Segment", "Count"]
 
-    rfm_revenue = filtered_df.groupby("Customer_ID")["Total_Amount"].sum().reset_index()
-    rfm_revenue.columns = ["Customer_ID", "Revenue"]
-    rfm = rfm.merge(rfm_revenue, on="Customer_ID", how="left")
+    rfm["Revenue"] = rfm["Monetary"]
     seg_revenue = rfm.groupby("Segment")["Revenue"].sum().reset_index()
 
     col_p, col_q = st.columns(2)
@@ -605,7 +609,7 @@ with tabs[5]:
             labels={"Count": "Customers", "Segment": "Segment"},
             color="Segment",
         )
-        st.plotly_chart(fig_seg_cnt, use_container_width=True)
+        st.plotly_chart(fig_seg_cnt, width="stretch")
         st.caption("Number of customers in each RFM segment.")
 
     with col_q:
@@ -614,10 +618,10 @@ with tabs[5]:
             x="Segment",
             y="Revenue",
             title="Revenue by RFM Segment",
-            labels={"Revenue": "Revenue ($)", "Segment": "Segment"},
+            labels={"Revenue": "Revenue (₹)", "Segment": "Segment"},
             color="Segment",
         )
-        st.plotly_chart(fig_seg_rev, use_container_width=True)
+        st.plotly_chart(fig_seg_rev, width="stretch")
         st.caption("Total revenue contributed by each RFM segment.")
 
 # ════════════════════════════════════════════════════════════
@@ -653,7 +657,11 @@ with tabs[6]:
         filtered_df.groupby("City")["Total_Amount"].sum().idxmax()
         if not filtered_df.empty else "N/A"
     )
-    _aov_val = filtered_df["Total_Amount"].mean() if not filtered_df.empty else 0
+    _top_city_aov = (
+        filtered_df[filtered_df["City"] == _top_city]["Total_Amount"].mean()
+        if not filtered_df.empty and _top_city in filtered_df["City"].values
+        else 0
+    )
 
     # Insight 1 — Returning customer rate
     if _ret_rate >= 60:
@@ -746,7 +754,7 @@ with tabs[6]:
         f"**🏆 Top Revenue Driver: {_top_cat}** \n\n"
         f"**Fact:** *{_top_cat}* generates {fmt_currency(_top_cat_rev)} in revenue, "
         f"representing {_top_cat_share:.1f}% of total revenue in this view. "
-        f"The highest-revenue city is **{_top_city}** with an average order value of {fmt_currency(_aov_val)}. \n\n"
+        f"The highest-revenue city is **{_top_city}** with an average order value of {fmt_currency(_top_city_aov)}. \n\n"
         f"**Interpretation:** Concentration in a single category and city can signal both strength and risk. \n\n"
         f"**Suggested Action:** Diversify marketing investment across under-performing categories "
         f"while protecting the leading segment's supply chain."
@@ -759,7 +767,7 @@ with tabs[7]:
     st.subheader("📋 Filtered Data Table")
     max_rows = 500
     display_df = filtered_df.head(max_rows)
-    st.dataframe(display_df, use_container_width=True)
+    st.dataframe(display_df, width="stretch")
     st.caption(
         f"Showing {len(display_df):,} of {len(filtered_df):,} filtered rows "
         f"(display capped at {max_rows:,} rows)."
