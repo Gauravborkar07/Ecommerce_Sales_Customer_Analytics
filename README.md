@@ -271,8 +271,8 @@ Download Python 3.10 or 3.11 from [python.org](https://www.python.org/downloads/
 ### 2. Clone or Download
 
 ```bash
-git clone https://github.com/[your-username]/ECommerce-Sales-Customer-Analytics.git
-cd ECommerce-Sales-Customer-Analytics
+git clone https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics.git
+cd Ecommerce_Sales_Customer_Analytics
 ```
 
 Or download the ZIP from GitHub and extract it.
@@ -447,7 +447,7 @@ All findings are grounded in actual computed results from the dataset.
 
 ## Author
 
-**Author:** [Your Name]
+**Author:** Gaurav Borkar
 **Internship:** AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026
 **Organization:** BharatCares
 
@@ -455,9 +455,7 @@ All findings are grounded in actual computed results from the dataset.
 
 ## GitHub Repository
 
-**GitHub Repository:** [Add repository link after publishing]
-
-> After pushing to GitHub, replace the placeholder above with your actual repository URL.
+**GitHub Repository:** [https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics](https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics)
 
 ---
 
