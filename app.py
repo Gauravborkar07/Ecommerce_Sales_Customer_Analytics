@@ -302,8 +302,9 @@ with tabs[2]:
             filtered_df2 = filtered_df.copy()
             filtered_df2["Age_Group"] = pd.cut(
                 filtered_df2["Age"],
-                bins=[0, 25, 35, 45, 55, 100],
-                labels=["<25", "25-34", "35-44", "45-54", "55+"],
+                bins=[17, 25, 35, 45, 55, 75],
+                labels=["18-25", "26-35", "36-45", "46-55", "56-75"],
+                right=True,
             )
             age_rev = (
                 filtered_df2.groupby("Age_Group", observed=True)["Total_Amount"]

@@ -358,14 +358,18 @@ ECommerce-Sales-Customer-Analytics/
 |
 |-- analysis.ipynb                                <- main analysis notebook
 |
+|-- GauravBorkar_EcommerceSalesCustomerAnalytics.ipynb  <- submission notebook
+|
 |-- app.py                                        <- Streamlit interactive dashboard
 |
 |-- requirements.txt                              <- pinned library versions
 |
 |-- README.md                                     <- this file
 |
+|-- GauravBorkar_ProjectReport.docx               <- submission project report
+|
 |-- report/
-|   +-- project_report.docx                      <- final internship report (.docx)
+|   +-- project_report.docx                      <- auto-generated internship report
 |
 |-- assets/
 |   +-- (55 chart PNG files auto-generated
