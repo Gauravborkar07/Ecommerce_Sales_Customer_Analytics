@@ -1,29 +1,28 @@
 # ============================================================
 # E-Commerce Sales Performance and Customer Behavior Analysis
-# Requirements File
-# Python 3.10 / 3.11 compatible
+# Requirements File — verified against Python 3.13
 # ============================================================
 
 # --- Core Data Processing ---
-pandas==2.2.2
-numpy==1.26.4
+pandas==3.0.6
+numpy==2.5.3
 
 # --- Visualisation ---
-matplotlib==3.8.4
+matplotlib==3.11.2
 seaborn==0.13.2
-plotly==5.22.0
+plotly==7.1.0
 
 # --- Interactive Dashboard ---
-streamlit==1.35.0
+streamlit==1.64.0
 
 # --- Statistical Analysis ---
-scipy==1.13.0
+scipy==1.18.1
 
 # --- Report Generation ---
-python-docx==1.1.2
+python-docx==1.2.0
 
 # --- Excel Export ---
-openpyxl==3.1.2
+openpyxl==3.1.5
 
 # --- Jupyter Notebook Support ---
 nbformat==5.10.4
