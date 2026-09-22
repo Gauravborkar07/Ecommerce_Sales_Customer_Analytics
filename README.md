@@ -1,11 +1,10 @@
 # E-Commerce Sales Performance and Customer Behavior Analysis Using Data Analytics and AI
 
-> An internship data analytics project that applies exploratory data analysis, KPI computation,
-> customer behaviour analysis, RFM segmentation, and an AI-assisted insight framework to an
-> e-commerce transactional dataset.
->
-> **Internship:** AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026
-> **Organization:** BharatCares
+> An internship data analytics project that applies exploratory data analysis, KPI computation, customer behaviour analysis, RFM segmentation, and an AI-assisted insight framework to an e-commerce transactional dataset.
+
+**Internship:** AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026
+
+**Organization:** BharatCares
 
 ---
 
@@ -35,63 +34,66 @@
 
 ## Project Overview
 
-This project performs a comprehensive data analytics study on an e-commerce transactional
-dataset covering **15 months** of customer orders (January 2023 – March 2024).
+This project performs a comprehensive data analytics study on an e-commerce transactional dataset covering approximately 15 months of customer orders from January 2023 to March 2024.
 
-The analysis spans:
-- Sales performance measurement across time, geography, and product category
-- Customer behaviour profiling using demographics, session, and device data
-- RFM (Recency, Frequency, Monetary) customer segmentation
-- Delivery performance and customer satisfaction evaluation
-- Discount impact and penetration analysis
-- An AI-assisted insight framework converting findings into business actions
-- An interactive Streamlit dashboard for business stakeholders
+The analysis focuses on:
 
-All findings and recommendations are derived exclusively from calculations on the actual dataset.
-No results are invented or assumed prior to analysis.
+- Sales performance measurement across time, geography, and product category.
+- Customer behaviour profiling using demographic, session, and device data.
+- RFM (Recency, Frequency, Monetary) customer segmentation.
+- Delivery performance and customer satisfaction evaluation.
+- Discount impact and penetration analysis.
+- AI-assisted insight generation for business decision-making.
+- An interactive Streamlit dashboard for business stakeholders.
+
+All findings and recommendations are derived from calculations performed on the provided dataset.
 
 ---
 
 ## Problem Statement
 
-E-commerce businesses generate large volumes of transactional data yet often lack a structured
-analytical framework to answer critical questions:
+E-commerce businesses generate large volumes of transactional data but often lack a structured analytical framework to answer important business questions.
 
-- Which product categories and cities drive the most revenue?
-- What distinguishes high-value customers from low-value ones?
+This project addresses the following questions:
+
+- Which product categories and cities generate the highest revenue?
+- What distinguishes high-value customers from low-value customers?
 - How does delivery time relate to customer satisfaction?
-- Which customers are at risk of disengaging?
-- Where should discounting strategy be focused?
+- Which customers may be at risk of disengaging?
+- Where should discounting strategies be focused?
+- How can data-driven insights support business decisions?
 
-This project builds that analytical framework from the ground up, ending with a set of
-data-grounded, actionable business recommendations.
+The project builds an analytical framework to convert raw e-commerce data into meaningful and actionable business insights.
 
 ---
 
 ## Project Objectives
 
-| # | Objective |
+| No. | Objective |
 |---|---|
 | O1 | Measure and track core sales KPIs across time, geography, and product category |
 | O2 | Analyse customer behaviour using session, device, payment, and demographic data |
 | O3 | Evaluate delivery performance and its relationship with customer satisfaction |
 | O4 | Identify discount usage patterns and their relationship with order value |
-| O5 | Segment customers by value and purchase behaviour using RFM analysis |
-| O6 | Build an AI-assisted insight framework (Fact -> Insight -> Risk/Opportunity -> Action) |
-| O7 | Deliver an interactive Streamlit dashboard for business stakeholders |
-| O8 | Produce a structured internship project report in `.docx` format |
+| O5 | Segment customers based on value and purchase behaviour using RFM analysis |
+| O6 | Build an AI-assisted insight framework using Fact → Insight → Risk/Opportunity → Action |
+| O7 | Develop an interactive Streamlit dashboard for business stakeholders |
+| O8 | Prepare a structured internship project report in DOCX format |
 
 ---
 
 ## Project Goals
 
-- Produce a clean, reproducible Jupyter notebook covering the full analytics lifecycle
-- Compute 15+ business KPIs directly from the dataset
-- Generate 55+ charts and visualisations saved to `assets/`
-- Build a rule-based RFM customer segmentation model (descriptive, not predictive)
-- Identify satisfaction-risk orders and suggest actionable logistics improvements
-- Deliver a Streamlit dashboard with 8 interactive tabs and 7 sidebar filters
-- Submit a professional `.docx` project report with embedded charts and computed KPI tables
+The key goals of this project are:
+
+- Produce a clean and reproducible Jupyter Notebook.
+- Compute more than 15 business KPIs directly from the dataset.
+- Generate more than 55 charts and visualisations.
+- Build a rule-based RFM customer segmentation model.
+- Identify customer satisfaction risks related to delivery performance.
+- Develop a Streamlit dashboard with interactive tabs and filters.
+- Prepare a professional project report with charts and KPI tables.
+- Provide data-grounded business insights and recommendations.
 
 ---
 
@@ -99,166 +101,230 @@ data-grounded, actionable business recommendations.
 
 | Attribute | Detail |
 |---|---|
-| **File name** | `ecommerce_customer_behavior_dataset_v2.csv` |
-| **Format** | CSV (comma-separated values) |
-| **Records** | 17,049 rows |
-| **Columns** | 18 columns |
-| **Unique Customers** | 5,000 |
-| **Unique Orders** | 17,049 |
-| **Date Range** | January 1, 2023 – March 25, 2024 (~15 months) |
-| **Missing Values** | None |
-| **Duplicate Rows** | None |
-| **Dataset Source** | Dataset source link: To be added. |
+| File Name | `ecommerce_customer_behavior_dataset_v2.csv` |
+| Format | CSV |
+| Records | 17,049 rows |
+| Columns | 18 columns |
+| Unique Customers | 5,000 |
+| Unique Orders | 17,049 |
+| Date Range | January 1, 2023 – March 25, 2024 |
+| Missing Values | None |
+| Duplicate Rows | None |
+| Product Categories | 8 |
+| Cities | 10 |
+
+### Dataset Source
+
+The dataset can be downloaded from the following Google Drive link:
+
+[Download E-Commerce Customer Behavior Dataset](https://drive.google.com/file/d/1xx3co8Mo7EDAGTvhiVA8CkgJ_vOmPfsI/view?usp=sharing)
+
+The dataset file is also included in this repository:
+
+```text
+ecommerce_customer_behavior_dataset_v2.csv
+```
 
 ### Important Columns
 
 | Column | Type | Description |
 |---|---|---|
-| `Order_ID` | string | Unique order identifier |
-| `Customer_ID` | string | Unique customer identifier |
-| `Date` | datetime | Order date |
-| `Age` | integer | Customer age (18–75) |
-| `Gender` | string | Female / Male / Other |
-| `City` | string | 10 cities |
-| `Product_Category` | string | 8 product categories |
-| `Unit_Price` | float | Price per unit |
-| `Quantity` | integer | Units ordered (1–5) |
-| `Discount_Amount` | float | Discount applied |
-| `Total_Amount` | float | Derived: (Unit_Price × Quantity) − Discount_Amount |
-| `Payment_Method` | string | 5 payment methods |
-| `Device_Type` | string | Mobile / Desktop / Tablet |
-| `Session_Duration_Minutes` | integer | Session length on site (4–26 min) |
-| `Pages_Viewed` | integer | Pages visited per session (1–18) |
-| `Is_Returning_Customer` | boolean | True = returning customer |
-| `Delivery_Time_Days` | integer | Days from order to delivery (1–25) |
-| `Customer_Rating` | integer | Post-delivery rating (1–5) |
+| `Order_ID` | String | Unique order identifier |
+| `Customer_ID` | String | Unique customer identifier |
+| `Date` | Datetime | Order date |
+| `Age` | Integer | Customer age |
+| `Gender` | String | Customer gender |
+| `City` | String | Customer city |
+| `Product_Category` | String | Product category |
+| `Unit_Price` | Float | Price per unit |
+| `Quantity` | Integer | Number of units ordered |
+| `Discount_Amount` | Float | Discount applied to the order |
+| `Total_Amount` | Float | Final order amount |
+| `Payment_Method` | String | Payment method used |
+| `Device_Type` | String | Mobile, Desktop, or Tablet |
+| `Session_Duration_Minutes` | Integer | Session duration on the website |
+| `Pages_Viewed` | Integer | Number of pages viewed |
+| `Is_Returning_Customer` | Boolean | Indicates whether the customer is returning |
+| `Delivery_Time_Days` | Integer | Delivery duration in days |
+| `Customer_Rating` | Integer | Customer rating from 1 to 5 |
 
 ### Dataset Purpose
 
-Used strictly for educational and internship analytics purposes.
-No personally identifiable information is present.
+The dataset is used strictly for educational and internship analytics purposes.
 
-### Dataset Access
-
-> **Google Drive Download Link:**
-> [https://drive.google.com/file/d/1xx3co8Mo7EDAGTvhiVA8CkgJ_vOmPfsI/view?usp=sharing](https://drive.google.com/file/d/1xx3co8Mo7EDAGTvhiVA8CkgJ_vOmPfsI/view?usp=sharing)
->
-> If the above link is unavailable, the dataset file is included in this repository as:
-> `ecommerce_customer_behavior_dataset_v2.csv`
+No personally identifiable information is included in the dataset.
 
 ---
 
 ## Tools and Technologies
 
-| Tool / Library | Version | Purpose |
-|---|---|---|
-| Python | 3.10 / 3.11 | Core programming language |
-| `pandas` | 2.2.2 | Data loading, manipulation, aggregation |
-| `numpy` | 1.26.4 | Numerical operations |
-| `matplotlib` | 3.8.4 | Base plotting and chart export |
-| `seaborn` | 0.13.2 | Statistical visualisations |
-| `plotly` | 5.22.0 | Interactive dashboard charts |
-| `streamlit` | 1.35.0 | Interactive web dashboard |
-| `scipy` | 1.13.0 | Pearson correlation and statistical tests |
-| `python-docx` | 1.1.2 | `.docx` report generation |
-| `openpyxl` | 3.1.2 | Excel export |
-| `nbformat` | 5.10.4 | Jupyter notebook format |
-| `ipykernel` | 6.29.4 | Jupyter kernel |
-| Jupyter Notebook | — | Interactive analysis environment |
+| Tool / Library | Purpose |
+|---|---|
+| Python | Core programming language |
+| Pandas | Data loading, cleaning, and manipulation |
+| NumPy | Numerical operations |
+| Matplotlib | Data visualisation and chart generation |
+| Seaborn | Statistical visualisation |
+| Plotly | Interactive charts |
+| Streamlit | Interactive web dashboard |
+| SciPy | Correlation and statistical analysis |
+| Python-docx | DOCX report generation |
+| OpenPyXL | Excel file handling |
+| Nbformat | Jupyter Notebook format handling |
+| IPykernel | Jupyter execution kernel |
+| Jupyter Notebook | Interactive analysis environment |
+| Git and GitHub | Version control and project hosting |
 
 ---
 
 ## Methodology / Workflow
 
-```
+The project followed the complete data analytics lifecycle:
+
+```text
 1. Data Loading and Inspection
-        |
+            ↓
 2. Data Cleaning and Type Conversion
-        |
-3. Feature Engineering (11 derived features)
-        |
-4. Data Validation (15 assertion checks)
-        |
-5. KPI Computation (15 KPIs)
-        |
+            ↓
+3. Feature Engineering
+            ↓
+4. Data Validation
+            ↓
+5. KPI Computation
+            ↓
 6. Exploratory Data Analysis
-   - Univariate Analysis
-   - Bivariate Analysis
-   - Multivariate Analysis
-        |
+            ↓
 7. Time-Series and Sales Trend Analysis
-        |
+            ↓
 8. Customer Behaviour Analysis
-        |
+            ↓
 9. RFM Customer Segmentation
-        |
+            ↓
 10. Delivery, Satisfaction and Discount Analysis
-        |
+            ↓
 11. AI-Assisted Insight Framework
-        |
-12. Streamlit Dashboard
-        |
-13. Project Report (.docx)
+            ↓
+12. Streamlit Dashboard Development
+            ↓
+13. Project Report Preparation
 ```
+
+### Main Analytical Activities
+
+- Data cleaning and preprocessing.
+- Feature engineering.
+- KPI calculation.
+- Univariate analysis.
+- Bivariate analysis.
+- Multivariate analysis.
+- Time-series analysis.
+- Customer segmentation.
+- Delivery and rating analysis.
+- Discount analysis.
+- Business insight generation.
+- Interactive dashboard development.
 
 ---
 
 ## Exploratory Data Analysis
 
-The EDA is structured across three sub-sections in the notebook:
+The exploratory data analysis was divided into multiple sections.
 
-**Univariate Analysis (Section 3)**
-- Distribution analysis for all 9 numerical variables with histograms, KDE plots, and boxplots
-- Count distributions for all 5 categorical variables
-- Key findings: `Total_Amount` and `Unit_Price` are heavily right-skewed (skew > 3.5); `Quantity` is uniformly distributed 1–5; 62% of orders have zero discount
+### 1. Univariate Analysis
 
-**Bivariate / Multivariate Analysis (Section 4)**
-- Pearson correlation heatmap across all numerical variables
-- Scatter plots: `Total_Amount` vs `Unit_Price` (r=+0.87), `Session_Duration` (r=-0.009), `Pages_Viewed` (r=+0.009)
-- Grouped bar charts: revenue by category × gender, device, payment method
-- Delivery time vs customer rating analysis
+The following analyses were performed:
 
-**Time-Series Analysis (Section 5)**
-- Monthly revenue trend, order count, AOV, and MoM growth across 15 months
-- Quarterly comparison and yearly summary (2023 full, 2024 partial)
-- Category-wise monthly revenue trends
-- Returning vs new customer revenue over time
+- Distribution of numerical variables.
+- Histograms and KDE plots.
+- Boxplots for outlier analysis.
+- Count distributions for categorical variables.
+- Analysis of order value and unit price.
+- Quantity and discount distribution analysis.
 
-> **Correlation note:** All correlation findings are associations only — causation cannot be established.
+### 2. Bivariate and Multivariate Analysis
+
+The following relationships were studied:
+
+- Correlation between numerical variables.
+- Total amount versus unit price.
+- Total amount versus session duration.
+- Total amount versus pages viewed.
+- Revenue by product category and gender.
+- Revenue by device type.
+- Revenue by payment method.
+- Delivery time versus customer rating.
+
+### 3. Time-Series Analysis
+
+The following time-based analyses were performed:
+
+- Monthly revenue trend.
+- Monthly order count.
+- Average Order Value trend.
+- Month-over-month revenue growth.
+- Quarterly performance comparison.
+- Yearly summary.
+- Category-wise monthly revenue trends.
+- Returning versus new customer revenue over time.
+
+> Correlation findings represent associations only. Correlation does not establish causation.
 
 ---
 
 ## Key Findings
 
-All findings below are computed directly from the dataset:
+The following findings were calculated from the dataset:
 
-1. **Total Revenue:** 21,779,052.59 across 17,049 orders in 15 months
-2. **Average Order Value (AOV):** 1,277.44 per order
-3. **Returning customers:** 88.2% of orders and 88.1% of total revenue come from returning customers
-4. **Top revenue category:** Electronics (10,481,898 — 48.1% of total revenue) despite ranking 6th in order count
-5. **Top city by revenue:** Istanbul (5,646,596 — 25.9% of total revenue)
-6. **Mobile dominance:** 56.0% of orders placed via Mobile; Desktop has the highest AOV (1,310.77)
-7. **Discount penetration:** 38.0% of orders include a discount; AOV without discount (1,338) > with discount (1,178)
-8. **Delivery:** Average delivery = 6.50 days; 13.2% of orders take >10 days
-9. **Customer rating:** Average 3.90/5; 13.3% of orders rated 1 or 2 (low satisfaction)
-10. **Satisfaction risk:** 316 orders (1.85%) combine delivery >10 days AND rating ≤2 — Istanbul (83), Ankara (47), Izmir (37) top the list
-11. **RFM segments:** Champions (640, 12.8%) and Loyal Customers (966, 19.3%) account for 54.2% of total revenue; At-Risk customers = 778 (15.6%)
-12. **Session behaviour:** Near-zero correlation between session duration / pages viewed and order value suggests session metrics alone do not predict spend
+| Metric | Result |
+|---|---:|
+| Total Revenue | 21,779,052.59 |
+| Average Order Value | 1,277.44 |
+| Returning Customer Orders | 88.2% |
+| Returning Customer Revenue | 88.1% |
+| Top Revenue Category | Electronics |
+| Top Revenue City | Istanbul |
+| Mobile Order Share | 56.0% |
+| Average Delivery Time | 6.50 days |
+| Average Customer Rating | 3.90 / 5 |
+| Low-Rating Orders | 13.3% |
+| Satisfaction-Risk Orders | 316 |
+| At-Risk Customers | 778 |
+
+### Major Observations
+
+1. Total revenue was approximately 21.78 million across 17,049 orders.
+2. The average order value was approximately 1,277.44.
+3. Returning customers contributed a significant share of orders and revenue.
+4. Electronics was the highest revenue-generating product category.
+5. Istanbul was the highest revenue-generating city.
+6. Mobile devices accounted for the highest share of orders.
+7. Desktop users recorded the highest average order value.
+8. Orders with discounts had a lower average order value than orders without discounts.
+9. Average delivery time was approximately 6.50 days.
+10. A measurable percentage of orders received low customer ratings.
+11. RFM segmentation identified Champions, Loyal Customers, At-Risk Customers, and other customer groups.
+12. Session duration and pages viewed showed very weak relationships with order value.
 
 ---
 
 ## Business Insights and Recommendations
 
-> All recommendations are based on computed dataset results.
-> They are analytical suggestions — not guaranteed outcomes.
+All recommendations are based on the calculated dataset results.
 
-| Tier | Area | Recommendation |
-|---|---|---|
-| 1 | Revenue Growth | Focus on Electronics and Istanbul — they contribute the highest revenue share. Investigate peak months (Jul, Dec 2023) for campaign timing. |
-| 2 | Customer Retention | 88.2% returning customer rate is high. Build a formal loyalty programme for Champions and Loyal RFM segments to protect this advantage. |
-| 3 | At-Risk Re-engagement | 778 At-Risk customers have not ordered recently despite past frequency. Run targeted win-back campaigns with personalised category offers. |
-| 4 | Logistics Improvement | Istanbul, Ankara, and Izmir have the highest concentration of satisfaction-risk orders. Audit last-mile delivery partners in these cities. |
-| 5 | Discounting Strategy | 38% discount penetration with no evidence of AOV uplift. Avoid blanket discounting; test targeted discounts for specific segments and measure conversion. |
+| Area | Recommendation |
+|---|---|
+| Revenue Growth | Focus on high-performing categories such as Electronics and high-revenue cities such as Istanbul |
+| Customer Retention | Introduce loyalty programmes and personalised offers for returning customers |
+| At-Risk Re-engagement | Run targeted win-back campaigns for At-Risk RFM customer segments |
+| Logistics Improvement | Review delivery operations in cities with higher satisfaction-risk orders |
+| Discount Strategy | Avoid blanket discounting and test targeted offers for specific customer segments |
+| Customer Satisfaction | Monitor low ratings and investigate delivery or product-related issues |
+| Inventory Planning | Maintain adequate stock for high-demand categories |
+| Average Order Value | Use product bundling, cross-selling, and upselling strategies |
+| Customer Segmentation | Use RFM segments to personalise marketing campaigns |
+| Data-Driven Decisions | Regularly monitor KPIs through the analytics dashboard |
+
+> These recommendations are analytical suggestions and do not guarantee specific business outcomes.
 
 ---
 
@@ -266,84 +332,123 @@ All findings below are computed directly from the dataset:
 
 ### 1. Install Python
 
-Download Python 3.10 or 3.11 from [python.org](https://www.python.org/downloads/).
+Install Python 3.10 or Python 3.11 from:
 
-### 2. Clone or Download
+[https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+### 2. Clone the Repository
 
 ```bash
 git clone https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics.git
+```
+
+### 3. Navigate to the Project Folder
+
+```bash
 cd Ecommerce_Sales_Customer_Analytics
 ```
 
-Or download the ZIP from GitHub and extract it.
+### 4. Create a Virtual Environment
 
-### 3. Create a Virtual Environment (recommended)
+For Windows:
 
 ```bash
-# Windows
 python -m venv venv
 venv\Scripts\activate
+```
 
-# macOS / Linux
+For macOS/Linux:
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### 4. Install Dependencies
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Place the Dataset
+### 6. Place the Dataset
 
-Ensure the dataset file is in the project root:
+Make sure the dataset is available in the project root directory:
 
+```text
+ecommerce_customer_behavior_dataset_v2.csv
 ```
-ECommerce-Sales-Customer-Analytics/
-    ecommerce_customer_behavior_dataset_v2.csv
-```
-
-Download from Google Drive if needed:
-[https://drive.google.com/file/d/1xx3co8Mo7EDAGTvhiVA8CkgJ_vOmPfsI/view?usp=sharing](https://drive.google.com/file/d/1xx3co8Mo7EDAGTvhiVA8CkgJ_vOmPfsI/view?usp=sharing)
 
 ---
 
 ## How to Run the Notebook
 
+Start Jupyter Notebook using:
+
 ```bash
-jupyter notebook analysis.ipynb
+jupyter notebook
 ```
 
-Run all cells from top to bottom in order. The notebook will:
-- Load and preprocess the dataset
-- Compute all 15 KPIs
-- Generate and save all 55 charts to `assets/`
-- Run all analysis sections (Sections 1–9)
-- Generate `report/project_report.docx`
+Then open the following notebook:
+
+```text
+GauravBorkar_EcommerceSalesCustomerAnalytics.ipynb
+```
+
+Run all cells sequentially from top to bottom.
+
+The notebook performs the following activities:
+
+- Loads the dataset.
+- Cleans and preprocesses the data.
+- Computes business KPIs.
+- Performs exploratory data analysis.
+- Generates charts and visualisations.
+- Performs RFM segmentation.
+- Analyses delivery, ratings, and discounts.
+- Generates business insights.
 
 ---
 
 ## How to Run the Dashboard
 
+The project includes an interactive Streamlit dashboard.
+
+Run the following command:
+
 ```bash
 streamlit run app.py
 ```
 
-The dashboard opens at `http://localhost:8501` and includes 8 interactive tabs:
+The dashboard will open in a browser at:
+
+```text
+http://localhost:8501
+```
+
+### Dashboard Tabs
 
 | Tab | Contents |
 |---|---|
-| 📊 Overview | 6 KPI metric cards, monthly revenue trend, revenue by category |
-| 🏙️ City & Category | Revenue by city, revenue by category, city × category heatmap |
-| 👥 Customer Behaviour | Returning vs new, age group, gender, device, payment method |
-| 📦 Delivery & Ratings | Delivery time histogram, avg delivery by city, rating distribution |
-| 💰 Discount Analysis | Discount penetration, discount by category, AOV comparison |
-| 🎯 RFM Segments | Descriptive RFM segmentation (Champions, Loyal, At-Risk, etc.) |
-| 🤖 AI Insights | 5 dynamically computed insight cards from filtered data |
-| 📋 Data Table | Filtered records table (up to 500 rows) |
+| Overview | KPI cards, monthly revenue trend, and category revenue |
+| City & Category | Revenue by city, category, and heatmap |
+| Customer Behaviour | Returning customers, age group, gender, device, and payment analysis |
+| Delivery & Ratings | Delivery distribution, city-wise delivery, and ratings |
+| Discount Analysis | Discount penetration and average order value comparison |
+| RFM Segments | Customer segmentation using RFM analysis |
+| AI Insights | Dynamically generated insight cards |
+| Data Table | Filtered dataset records |
 
-**Sidebar filters:** Date range, Product Category, City, Gender, Device Type, Payment Method, Returning Customer status.
+### Dashboard Filters
+
+The dashboard includes filters for:
+
+- Date range.
+- Product category.
+- City.
+- Gender.
+- Device type.
+- Payment method.
+- Returning customer status.
 
 > The dashboard is educational and analytical. It does not claim predictive AI functionality.
 
@@ -351,73 +456,77 @@ The dashboard opens at `http://localhost:8501` and includes 8 interactive tabs:
 
 ## Project Folder Structure
 
-```
-ECommerce-Sales-Customer-Analytics/
-|
-|-- ecommerce_customer_behavior_dataset_v2.csv   <- original dataset
-|
-|-- analysis.ipynb                                <- main analysis notebook
-|
-|-- GauravBorkar_EcommerceSalesCustomerAnalytics.ipynb  <- submission notebook
-|
-|-- app.py                                        <- Streamlit interactive dashboard
-|
-|-- requirements.txt                              <- pinned library versions
-|
-|-- README.md                                     <- this file
-|
-|-- GauravBorkar_ProjectReport.docx               <- submission project report
-|
-|-- report/
-|   +-- project_report.docx                      <- auto-generated internship report
-|
-|-- assets/
-|   +-- (55 chart PNG files auto-generated
-|        by the notebook)
-|
-+-- .gitignore
+```text
+Ecommerce_Sales_Customer_Analytics/
+│
+├── ecommerce_customer_behavior_dataset_v2.csv
+├── GauravBorkar_EcommerceSalesCustomerAnalytics.ipynb
+├── app.py
+├── requirements.txt
+├── README.md
+├── GauravBorkar_ProjectReport.docx
+│
+├── report/
+│   └── project_report.docx
+│
+├── assets/
+│   └── chart PNG files
+│
+└── .gitignore
 ```
 
 ---
 
 ## Chart References
 
-Selected charts from `assets/` (all generated by `analysis.ipynb`):
+Selected charts generated during the analysis include:
 
-| File | Section | Description |
-|---|---|---|
-| `eda_uni_customer_rating.png` | Section 3 | Customer rating distribution (1–5) |
-| `eda_uni_total_amount.png` | Section 3 | Total Amount distribution (log scale) |
-| `ts_monthly_revenue.png` | Section 5 | Monthly revenue trend (15 months) |
-| `ts_mom_growth.png` | Section 5 | Month-over-month revenue growth |
-| `eda_biv_correlation_heatmap.png` | Section 4 | Pearson correlation heatmap |
-| `eda_biv_delivery_vs_rating.png` | Section 4 | Delivery time vs customer rating |
-| `cb_age_group_revenue.png` | Section 6 | Revenue by age group |
-| `rfm_segment_overview.png` | Section 7 | RFM segment distribution, revenue, and scatter |
-| `del_delivery_distribution.png` | Section 8 | Delivery time distribution with buckets |
-| `ai_risk_opportunity.png` | Section 9 | Risk and opportunity summary chart |
+| Chart File | Description |
+|---|---|
+| `eda_uni_customer_rating.png` | Customer rating distribution |
+| `eda_uni_total_amount.png` | Total amount distribution |
+| `ts_monthly_revenue.png` | Monthly revenue trend |
+| `ts_mom_growth.png` | Month-over-month revenue growth |
+| `eda_biv_correlation_heatmap.png` | Pearson correlation heatmap |
+| `eda_biv_delivery_vs_rating.png` | Delivery time versus customer rating |
+| `cb_age_group_revenue.png` | Revenue by age group |
+| `rfm_segment_overview.png` | RFM segment distribution and revenue |
+| `del_delivery_distribution.png` | Delivery time distribution |
+| `ai_risk_opportunity.png` | Risk and opportunity summary |
 
-Full chart list: 55 files in `assets/`.
+The project contains more than 55 charts and visualisations saved in the `assets/` directory.
 
 ---
 
 ## Conclusion
 
-This project successfully demonstrates the full data analytics lifecycle applied to an
-e-commerce transactional dataset. Starting from raw CSV data, the analysis progressed through
-data cleaning, feature engineering, KPI computation, EDA, customer segmentation, delivery
-and satisfaction analysis, and an AI-assisted business insight framework.
+This project demonstrates the complete data analytics lifecycle applied to an e-commerce transactional dataset.
 
-Key outcomes:
-- 15 business KPIs computed and tabulated
-- 55 visualisations generated and saved
-- 5 RFM customer segments identified (rule-based, descriptive)
-- 316 satisfaction-risk orders identified and mapped by city and category
-- 10 structured business insights produced with Fact -> Interpretation -> Action format
-- An interactive 8-tab Streamlit dashboard delivered
-- A professional 30+ page project report generated
+The analysis covers:
 
-All findings are grounded in actual computed results from the dataset.
+- Data cleaning.
+- Feature engineering.
+- KPI computation.
+- Exploratory data analysis.
+- Sales trend analysis.
+- Customer behaviour analysis.
+- RFM customer segmentation.
+- Delivery and satisfaction analysis.
+- Discount analysis.
+- AI-assisted business insights.
+- Interactive dashboard development.
+
+### Key Outcomes
+
+- Business KPIs were computed and analysed.
+- More than 55 visualisations were generated.
+- Customer segments were identified using RFM analysis.
+- Satisfaction-risk orders were identified.
+- Business recommendations were developed from actual dataset results.
+- An interactive Streamlit dashboard was created.
+- A professional project report was prepared.
+
+All findings are based on the provided dataset and the performed analysis.
 
 ---
 
@@ -425,43 +534,57 @@ All findings are grounded in actual computed results from the dataset.
 
 ### Limitations
 
-- No product-level SKU data — analysis limited to 8 broad categories
-- No cost or profit margin data — cannot extend to profitability analysis
-- No customer acquisition channel data — marketing attribution not possible
-- `Quantity` is capped at 5 — may reflect data generation constraints
-- `Session_Duration_Minutes` and `Pages_Viewed` have narrow integer ranges
-- `Gender: Other` has only 260 records — insufficient for reliable segment conclusions
-- No returns, refunds, or cancellation data — satisfaction analysis is incomplete
-- No time-of-day data — intraday patterns cannot be analysed
-- 2024 data is partial (Jan 1 – Mar 25 only) — full-year comparisons not possible
-- All correlation findings are associations only — causation cannot be established
-- Dataset characteristics suggest possible synthetic generation
+- The dataset contains only broad product categories and no SKU-level information.
+- Cost and profit margin data are not available.
+- Customer acquisition channel data is not included.
+- Quantity values are limited to a range of 1 to 5.
+- Session duration and pages viewed have narrow ranges.
+- Some demographic groups have limited records.
+- Returns, refunds, and cancellation data are not available.
+- Time-of-day analysis cannot be performed.
+- The 2024 data covers only a partial year.
+- Correlation analysis cannot establish causation.
+- The dataset may contain synthetic data characteristics.
 
 ### Future Scope
 
-- Integrate SKU-level product data for recommendation models
-- Add return/refund data for complete satisfaction and churn modelling
-- Connect to a live database for real-time dashboard refresh
-- Extend RFM with predictive CLV modelling (BG/NBD model)
-- Add geospatial visualisation with geocoded city coordinates
-- Build automated weekly KPI report scheduler with email delivery
-- Deploy Streamlit dashboard to cloud (Streamlit Community Cloud, AWS, or Azure)
+Future improvements may include:
+
+- SKU-level product recommendation systems.
+- Sales forecasting.
+- Customer churn prediction.
+- Customer lifetime value modelling.
+- Return and refund analysis.
+- Real-time dashboard integration.
+- Live database connectivity.
+- Geospatial analysis using city coordinates.
+- Automated weekly KPI reports.
+- Cloud deployment using Streamlit Community Cloud, AWS, or Azure.
 
 ---
 
 ## Author
 
-**Author:** Gaurav Borkar
+**Gaurav Ghanshyam Borkar**
+
+**Institution:** Suryodaya College of Engineering and Technology
+
 **Internship:** AICTE | IBM SkillsBuild Data Analytics with AI Internship 2026
+
 **Organization:** BharatCares
 
 ---
 
 ## GitHub Repository
 
-**GitHub Repository:** [https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics](https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics)
+[View Project on GitHub](https://github.com/Gauravborkar07/Ecommerce_Sales_Customer_Analytics)
 
 ---
 
-*This project was developed as part of an internship programme. All analysis is based
-solely on the provided dataset. No external data sources were used.*
+## Acknowledgement
+
+I would like to express my gratitude to AICTE, IBM SkillsBuild, BharatCares, and all the mentors and instructors involved in the Data Analytics with AI Internship 2026 for providing valuable learning resources and practical project experience.
+
+---
+
+*This project was developed as part of an internship programme. All analysis is based on the provided dataset.*
